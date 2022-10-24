@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Naganocake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +10,84 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column h-100">
+
+    <header class="fixed-top">
+      <nav class="navbar navbat-expand-md navbar-dark fixed-top bg-white">
+        <div class="header-logo">
+          <%= link_to 'NAGANO CAKE', root_path %>
+        </div>
+        <div class="nav-button justify-content-end">
+          <ul class="navbar-nav mr-auto flex-row">
+            <% if admin_signed_in? %>
+              <!--管理者側表示-->
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "商品一覧", admin_items_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "会員一覧", admin_customers_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "注文履歴一覧", orders_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "ジャンル一覧", admin_genres_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </li>
+              </button>
+            <% end %>
+
+            <% unless signed_in? %>
+              <!--顧客または管理者がログインしていないときに表示-->
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "About", homes_about_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "商品一覧", items_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_registration_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_session_path %>
+                </li>
+              </button>
+            <% end %>
+
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main roll="main" class="flex-shrink-0 md-auto">
+
+        <%= yield %>
+
+    </main>
+
+    <footer class="fixed-bottom">
+      <div class="container">
+        <span class="text-muted">ここはフッターの領域</span>
+      </div>
+    </footer>
+
   </body>
 </html>
