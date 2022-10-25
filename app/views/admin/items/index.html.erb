@@ -1,0 +1,32 @@
+<h1>ここはadmin/items/index</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>商品一覧</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税込価格</th>
+            <th></th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.introduction %></td>
+            <td></td>
+            <td><%= item.is_active %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
