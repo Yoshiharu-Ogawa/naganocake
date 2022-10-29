@@ -40,3 +40,18 @@ footer {
   margin : 0 10px;
   width : 90px;
 }
+
+.confirm-button {
+  margin : 20px auto;
+}
+
+.page-title {
+  background-color : #EEEEEE;
+  padding : 0 20px;
+  display : inline-block;
+}
+
+.number_field {
+   width : 245px;
+}
+

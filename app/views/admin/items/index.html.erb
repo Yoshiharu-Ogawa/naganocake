@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h4>商品一覧</h4>
+      <h4 class="page-title">商品一覧</h4>
       <table class="table">
         <thead>
           <tr>
@@ -17,14 +17,25 @@
           <% @items.each do |item| %>
           <tr>
             <td><%= item.id %></td>
-            <td><%= item.name %></td>
-            <td><%= item.introduction %></td>
+            <td>
+              <%= link_to admin_item_path(item.id), class: '', method: :get do %>
+                <%= item.name %>
+              <% end %>
+            </td>
+            <td><%= item.price %></td>
             <td></td>
-            <td><%= item.is_active %></td>
+            <td>
+              <% if item.is_active == true %>
+                <div class="text-success font-weight-bold">販売中</div>
+              <% else %>
+                <div class="text-secondary font-weight-bold">販売停止中</div>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
       </table>
+      <%= paginate @items %>
     </div>
   </div>
 </div>

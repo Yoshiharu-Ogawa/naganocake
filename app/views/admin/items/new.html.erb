@@ -1,16 +1,18 @@
 <div class="container">
   <div class="">
 
-    <h4 class="ta-left">商品新規登録</h4>
+    <h4 class="page-title">商品新規登録</h4>
 
     <div>
-      <%= form_with model: @item do |f| %>
+      <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
 
         <div class="row">
           <h5 class="col-sm-4">商品画像</h5>
           <div class="col-sm-8">
-            <label class="input">
-              <%= f.file_field :image, class: "", accept: "image/*" %>
+            <label>
+              <span class="">
+                <%= f.file_field :image, class: "image_field", style: "", accept: "image/*" %>
+              </span>
             </label>
           </div>
         </div>
@@ -18,21 +20,21 @@
         <div class="row">
           <h5 class="col-sm-4">商品名</h5>
           <div class="col-sm-8">
-            <%= f.text_field :name %>
+            <%= f.text_field :name, size: "28" %>
           </div>
         </div>
 
         <div class="row">
           <h5 class="col-sm-4">商品説明</h5>
           <div class="col-sm-8">
-            <%= f.text_area :introduction %>
+            <%= f.text_area :introduction, size: "30x5" %>
           </div>
         </div>
 
         <div class="row">
           <h5 class="col-sm-4">税抜価格</h5>
           <div class="col-sm-8">
-            <%= f.number_field :price %>
+            <%= f.number_field :price, class: "number_field" %><span class="yen">円</span>
           </div>
         </div>
 
@@ -45,8 +47,9 @@
             <%= f.label :is_active, '販売停止中' %>
           </div>
         </div>
-        </br><%= f.submit '新規登録' %>
-
+        <div class="row">
+          <%= f.submit '新規登録', class: 'btn btn-success confirm-button' %>
+        </div>
     <% end %>
     </div>
   </div>
