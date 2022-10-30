@@ -10,9 +10,7 @@
           <h5 class="col-sm-4">商品画像</h5>
           <div class="col-sm-8">
             <label>
-              <span class="">
-                <%= f.file_field :image, class: "image_field", style: "", accept: "image/*" %>
-              </span>
+                <%= f.file_field :image, accept: "image/*" %>
             </label>
           </div>
         </div>
@@ -20,21 +18,21 @@
         <div class="row">
           <h5 class="col-sm-4">商品名</h5>
           <div class="col-sm-8">
-            <%= f.text_field :name, size: "28" %>
+            <%= f.text_field :name, size: "28", placeholder: "商品名" %>
           </div>
         </div>
 
         <div class="row">
           <h5 class="col-sm-4">商品説明</h5>
           <div class="col-sm-8">
-            <%= f.text_area :introduction, size: "30x5" %>
+            <%= f.text_area :introduction, size: "31x5", placeholder: "ここに説明文を記入します" %>
           </div>
         </div>
 
         <div class="row">
           <h5 class="col-sm-4">税抜価格</h5>
           <div class="col-sm-8">
-            <%= f.number_field :price, class: "number_field" %><span class="yen">円</span>
+            <%= f.number_field :price, class: "number_field", placeholder: "1000" %><span class="yen">円</span>
           </div>
         </div>
 

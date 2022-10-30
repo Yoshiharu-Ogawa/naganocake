@@ -1,0 +1,56 @@
+<h4 class="page-title">
+  <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
+</h4>
+
+<div class="container">
+  <div class="row">
+    <div class="data-title col-md-4">会員ID</div>
+    <div class="data-item col-md-8">
+      <%= @customer.id %>
+    </div>
+  </div>
+
+  <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+
+    <div class="row">
+      <div class="data-title col-md-4">氏名</div>
+      <div class="data-field col-md-4"></div>
+      <div class="data-field col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="data-title col-md-4">フリガナ</div>
+      <div class="data-field col-md-4"></div>
+      <div class="data-field col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="data-title col-md-4">郵便番号</div>
+      <div class="data-field col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="data-title col-md-4">住所</div>
+      <div class="data-field col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="data-title col-md-4">電話番号</div>
+      <div class="data-field col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="data-title col-md-4">メールアドレス</div>
+      <div class="data-field col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="data-title col-md-4">会員ステータス</div>
+      <div class="data-field col-md-4"></div>
+    </div>
+
+    <%= f.submit '変更を保存', class: 'btn btn-success confirm-button' %>
+
+  <% end %>
+
+</div>
