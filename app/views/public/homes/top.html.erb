@@ -1,0 +1,40 @@
+<div class="container">
+  <div class"row">
+    <div class="back-image">
+      <div class="top-message">
+        <p>ようこそ、ながのCAKEへ！</p><br>
+        <p>このサイトは、ケーキ販売のECサイトになります。</p><br>
+        <p>会員でない方も商品の閲覧はできますが、</p><br>
+        <p>購入には会員登録が必要になります。</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h2 style="font-weight: 700; margin: 15px;">新着商品</h2>
+  </div>
+  <div class="row">
+    <% @item.each do |item| %>
+        <div class="col-md-3">
+          <%=  image_tag item.image, size: "150x100", class: "", style: "background-size : cover;" %>
+        </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <% @item.each do |item| %>
+        <div class="col-md-3 font-weight-bold">
+          <%= item.name %>
+        </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <% @item.each do |item| %>
+        <div class="col-md-3 font-weight-bold">
+          ¥<%= item.add_tax_price.to_s(:delimited) %>
+        </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-9"></div>
+    <%= link_to "全ての商品を見る>", items_path, class: "col-3" %>
+  </div>
+</div>

@@ -32,6 +32,42 @@ footer {
   border-top : 1px solid black;
 }
 
+h1 {
+  text-align : center;
+  padding-bottom : 30px;
+}
+
+.about-message {
+  text-align : center;
+  line-height: 20%;
+  font-weight: 600;
+}
+
+.about-item {
+  margin : 30px auto;
+  width : 300px;
+  padding : 50px 0;
+  border : 1px solid black;
+}
+
+.back-image {
+  background-image :url(cake1);
+  margin-bottom : 5px;
+  height: 280px;
+}
+
+.top-message {
+  background-color :rgba(0,0,0,0.3);
+  color : white;
+  line-height : 3px;
+  font-weight : 600;
+  padding : 40px 40px 40px 0;
+  width : 450px;
+  position : relative;
+  top: 55px;
+  left: 150px;
+}
+
 .nav-item {
   text-align : center;
 }
