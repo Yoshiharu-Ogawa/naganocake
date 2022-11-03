@@ -21,7 +21,7 @@
 main {
   padding-top : 150px;
   padding-bottom : 50px;
-  margin : 0 auto;
+  margin : 0 0 0 10%;
 }
 
 header {
@@ -35,6 +35,10 @@ footer {
 h1 {
   text-align : center;
   padding-bottom : 30px;
+}
+
+.field {
+  margin : 4px 0;
 }
 
 .about-message {
