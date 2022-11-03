@@ -5,54 +5,55 @@
 <%= form_with model: @public, url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field row">
+  <div class="field row form-group">
     <%= f.label "名前", class: "col-md-3" %>
-    <span style="margin-right: 1.5em;">(姓)</span><%= f.text_field :last_name, class: "col-md-3", placeholder: "令和" %>
-    <span style="margin: 0 1.5em 0 2em;">(名)</span><%= f.text_field :first_name, class: "col-md-3", placeholder: "太郎" %>
+    <span style="margin-right: 1.5em;">(姓)</span><%= f.text_field :last_name, class: "col-md-3 form-control", placeholder: "令和" %>
+    <span style="margin: 0 1.5em 0 2em;">(名)</span><%= f.text_field :first_name, class: "col-md-3 form-control", placeholder: "太郎" %>
   </div>
 
-  <div class="field row">
+  <div class="field row form-group">
     <%= f.label "フリガナ", class: "col-md-3" %>
-    <span style="margin-right: 0.5em;">(セイ)</span><%= f.text_field :last_name_kana, class: "col-md-3", placeholder: "レイワ" %>
-    <span style="margin: 0 0.5em 0 2em;">(メイ)</span><%= f.text_field :first_name_kana, class: "col-md-3", placeholder: "タロウ" %>
+    <span style="margin-right: 0.5em;">(セイ)</span><%= f.text_field :last_name_kana, class: "col-md-3 form-control", placeholder: "レイワ" %>
+    <span style="margin: 0 0.5em 0 2em;">(メイ)</span><%= f.text_field :first_name_kana, class: "col-md-3 form-control", placeholder: "タロウ" %>
   </div>
 
-  <div class="field row">
+  <div class="field row form-group">
     <%= f.label "メールアドレス", class: "col-md-3" %><br />
-    <span style="margin-right: 3.1em;"></span><%= f.email_field :email, class: "col-md-3", autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "col-3" %>
+    <span style="margin-right: 3.1em;"></span><%= f.email_field :email, class: "col-md-3 form-control", autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
   </div>
 
-  <div class="field row">
+  <div class="field row form-group">
     <%= f.label "郵便番号(ハイフンなし)", class: "col-md-3" %>
-    <span style="margin-right: 3.1em;"></span><%= f.number_field :postal_code, class: "col-md-3", placeholder: "0000000" %>
+    <span style="margin-right: 3.1em;"></span><%= f.number_field :postal_code, class: "col-md-3 form-control", placeholder: "0000000" %>
   </div>
 
-  <div class="field row">
+  <div class="field row form-group">
     <%= f.label "住所", class: "col-md-3" %>
-    <span style="margin-right: 3.1em;"></span><%= f.text_field :address, class: "col-md-3", placeholder: "東京都渋谷区代々木神園町0-0" %>
+    <span style="margin-right: 3.1em;"></span><%= f.text_field :address, class: "col-md-7 form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
   </div>
 
-  <div class="field row">
+  <div class="field row form-group">
     <%= f.label "電話番号(ハイフンなし)", class: "col-md-3" %>
-    <span style="margin-right: 3.1em;"></span><%= f.text_field :address, placeholder: "0000000000" %>
+    <span style="margin-right: 3.1em;"></span><%= f.text_field :address, class: "col-md-3 form-control", placeholder: "0000000000" %>
   </div>
 
-  <div class="field row">
-    <%= f.label "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %>
-    <br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="field row form-group">
+    <%= f.label "パスワード(6文字以上)", class: "col-md-3" %>
+    <%# if @minimum_password_length %>
+    <!--<em>(<%#= @minimum_password_length %> 文字以上)</em>-->
+    <%# end %>
+    <!--<br />-->
+    <span style="margin-right: 3.1em;"></span><%= f.password_field :password, class: "col-md-3 form-control", autocomplete: "new-password" %>
   </div>
 
-  <div class="field row">
+  <div class="field row form-froup">
     <%= f.label "パスワード(確認用)", class: "col-md-3" %><br />
-    <span style="margin-right: 3.1em;"></span><%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <span style="margin-right: 3.1em;"></span><%= f.password_field :password_confirmation, class: "col-md-3 form-control", autocomplete: "new-password" %>
   </div>
 
   <div class="actions row">
-    <%= f.submit "新規登録", class: "btn btn-success" %>
+    <div class="col-md-3"></div>
+    <span style="margin-right: 3.1em;"></span><%= f.submit "新規登録", class: "btn btn-success col-md-3", style: "margin: 15px 0;" %>
   </div>
 <% end %>
 
