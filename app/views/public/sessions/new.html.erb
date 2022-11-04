@@ -1,26 +1,42 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<h4 class="page-title", style="margin-bottom: 25px;">ログイン</h4></br>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+<div class="container">
+  <h5 class="page-title", style="margin-bottom: 20px;">会員の方はこちらからログイン</h5>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @public, url: customer_session_path do |f| %>
+    <div class="field form-group row">
+      <%= f.label "メールアドレス", class: "col-md-3" %>
+      <%= f.email_field :email, class: "col-md-5 form-control", autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+    </div>
+
+    <div class="field form-group row">
+      <%= f.label "パスワード", class: "col-md-3" %>
+      <%= f.password_field :password, class: "col-md-5 form-control", autocomplete: "current-password" %>
+    </div>
+
+    <%# if devise_mapping.rememberable? %>
+      <!--<div class="field">-->
+        <%#= f.check_box :remember_me %>
+        <%#= f.label :remember_me %>
+      <!--</div>-->
+    <%# end %>
+
+    <div class="actions row", style="margin: 20px 0;">
+      <div class="col-md-3"></div>
+      <%= f.submit "ログイン", class: "btn btn-primary btn-sm col-md-2" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  <h5 class="page-title", style="margin: 40px 0 20px 0;">会員登録がお済でない方</h5></br>
 
-<%= render "public/shared/links" %>
+  <div class="row">
+    <span class="col-md-3"></span>
+    <%= render "public/shared/links", class: "col-md-1" %>
+    <span class="col-md">から新規登録を行ってください。</span>
+  </div>
+
+
+</div>
+
