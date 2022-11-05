@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_25_093609) do
+ActiveRecord::Schema.define(version: 2022_11_05_080127) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 2022_10_25_093609) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "name"
-    t.string "postal_code"
-    t.string "address"
+    t.string "name", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -72,16 +72,17 @@ ActiveRecord::Schema.define(version: 2022_10_25_093609) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
-    t.string "postal_code"
-    t.string "address"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
     t.string "telephone_number"
     t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "address_id"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -93,9 +94,9 @@ ActiveRecord::Schema.define(version: 2022_10_25_093609) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.text "introduction"
-    t.integer "price"
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "price", null: false
     t.boolean "is_active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

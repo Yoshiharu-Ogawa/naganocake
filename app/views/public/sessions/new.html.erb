@@ -5,7 +5,7 @@
   <h5 class="page-title", style="margin-bottom: 20px;">会員の方はこちらからログイン</h5>
 
   <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= form_with model: @public, url: customer_session_path do |f| %>
+  <%= form_with model: @customer, url: customer_session_path(resource_name), local: true do |f| %>
     <div class="field form-group row">
       <%= f.label "メールアドレス", class: "col-md-3" %>
       <%= f.email_field :email, class: "col-md-5 form-control", autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>

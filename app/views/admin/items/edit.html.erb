@@ -4,7 +4,7 @@
     <h4 class="page-title">商品編集</h4>
 
     <div>
-      <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+      <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
 
         <div class="row">
           <h5 class="col-sm-4">商品画像</h5>
@@ -34,7 +34,8 @@
         <div class="row">
           <h5 class="col-sm-4">税抜価格</h5>
           <div class="col-sm-8">
-            <%= f.number_field :price, class: "number_field", placeholder:　"1000" %><span class="yen">円</span>
+            <%= f.number_field :price, class: "number_field", placeholder: "1000" %>
+            <span class="yen">円</span>
           </div>
         </div>
 
@@ -48,7 +49,7 @@
           </div>
         </div>
         <div class="row">
-          <%= f.submit '変更を保存', class: 'btn btn-success confirm-button' %>
+          <%= f.submit '変更を保存', class: 'btn btn-success confirm-button', style: "width: 10em;" %>
         </div>
     <% end %>
     </div>
