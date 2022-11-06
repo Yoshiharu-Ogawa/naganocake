@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_05_080127) do
+ActiveRecord::Schema.define(version: 2022_10_25_093609) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_11_05_080127) do
     t.string "name", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -62,6 +63,8 @@ ActiveRecord::Schema.define(version: 2022_11_05_080127) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "amount"
+    t.integer "customer_id"
+    t.integer "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -82,7 +85,6 @@ ActiveRecord::Schema.define(version: 2022_11_05_080127) do
     t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "address_id"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -106,18 +108,21 @@ ActiveRecord::Schema.define(version: 2022_11_05_080127) do
     t.integer "price_including_tax"
     t.integer "quantity"
     t.integer "production_status", limit: 1, default: 0, null: false
+    t.integer "order_id"
+    t.integer "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "delivery_postal_code"
-    t.string "delivery_address"
-    t.string "delivery_name"
+    t.string "delivery_postal_code", null: false
+    t.string "delivery_address", null: false
+    t.string "delivery_name", null: false
     t.integer "total_payment"
     t.integer "freight"
     t.integer "payment_method", limit: 1, default: 0, null: false
     t.integer "order_status", limit: 1, default: 0, null: false
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
