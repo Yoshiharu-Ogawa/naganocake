@@ -17,7 +17,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
   #会員側のルーティング
   scope module: :public do
-    resources :addresses, only: [:new, :create, :destroy ]
+    resources :addresses, only: [:new, :index, :edit, :create, :update, :destroy ]
 
     resources :cart_items, only: [:index, :create, :update, :destroy ]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'

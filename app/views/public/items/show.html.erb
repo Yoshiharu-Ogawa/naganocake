@@ -1,0 +1,28 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5" style="margin-right: 20px;">
+            <%= image_tag @item.image, size: "300x200", class: "", style: "background-size : cover;" %>
+        </div>
+        <div class="col-md-6">
+            <h4><strong><%= @item.name %></strong></h4></br>
+            <p><%= @item.introduction %></p>
+            <div>
+                ¥<%= @item.add_tax_price.to_s(:delimited) %>
+                <span class="small">(税込)</span>
+                <% if @item.is_active == true %>
+                    <span class="text-success font-weight-bold">販売中</span>
+                 <% else %>
+                    <sapn class="text-secondary font-weight-bold">販売停止中</span>
+                <% end %>
+            </div>
+            <div class="row form-group">
+                <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+                    <%= f.select :amount, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5]], include_blank: "個数選択" %>
+                    <%= f.hidden_field :item_id, :value => @item.id %>
+                    <%= f.submit "カートに入れる", class: "btn btn-success", style: "width: 150px;" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

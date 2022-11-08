@@ -18,6 +18,11 @@
         <div class="header-logo">
           <%= link_to 'NAGANO CAKE', root_path %>
         </div>
+        <% if customer_signed_in? %>
+          <div>
+            ようこそ、<%= current_customer.last_name %>さん!
+          </div>
+        <% end %>
         <div class="nav-button justify-content-end">
           <ul class="navbar-nav mr-auto flex-row">
             <% if admin_signed_in? %>
@@ -49,8 +54,32 @@
               </button>
             <% end %>
 
+            <% if customer_signed_in? %>
+              <!--顧客がログインしているときに表示-->
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "マイページ", customer_path(current_customer.id) %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "商品一覧", items_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "カート", cart_items_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                </li>
+              </button>
+            <% end %>
+
             <% unless signed_in? %>
-              <!--顧客または管理者がログインしていないときに表示-->
+              <!--誰もログインしていないときに表示-->
               <button type="button" class="btn btn-outline-secondary">
                 <li class="nav-item">
                   <%= link_to "About", homes_about_path %>

@@ -1,0 +1,30 @@
+
+<h4 class="font-weight-bold">商品一覧</h4>
+<!--is_activeのレコードがtrueのデータの個数-->
+<span>(全<%= @items.where(is_active: true ).count %>件)</span>
+
+<div class="container">
+  <div class="row">
+    <% @items.where(is_active: true ).each do |item| %>
+      <div class="col-md-3">
+        <div class="row">
+          <%= link_to item_path(item.id) do %>
+            <%=  image_tag item.image, size: "150x100", class: "", style: "background-size : cover;" %>
+          <% end %>
+        </div>
+        <div class="row font-weight-bold">
+          <%= item.name %>
+        </div>
+        <div class="row font-weight-bold">
+          ¥<%= item.add_tax_price.to_s(:delimited) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div style="margin: 20px 40% 10px 50%;">
+  <%= paginate @items %>
+</div>
+
+

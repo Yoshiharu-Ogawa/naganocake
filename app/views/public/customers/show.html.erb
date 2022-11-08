@@ -1,0 +1,69 @@
+
+<h4 class="page-title" style="margin: 0px 0 25px 120px;">マイページ</h4>
+
+<div class="container">
+  <div class="row" style="margin-bottom: 15px;">
+    <h4 class="col-3">登録情報</h4>
+    <%= link_to "編集する", edit_customer_path(current_customer.id), class: "btn btn-success" %>
+  </div>
+
+  <div class="container customer_status" style="max-width: 550px; margin: 5px 0 10px 0;">
+    <div class="row customer_status_box">
+      <div class="customer_status_title">
+        氏名
+      </div>
+      <div class="customer_status_item">
+        <%= current_customer.last_name %>　<%= current_customer.first_name %>
+      </div>
+    </div>
+    <div class="row customer_status_box">
+      <div class="customer_status_title">
+        カナ
+      </div>
+      <div class="customer_status_item">
+        <%= current_customer.last_name_kana %>　<%= current_customer.first_name_kana %>
+      </div>
+    </div>
+    <div class="row customer_status_box">
+      <div class="customer_status_title">
+        郵便番号
+      </div>
+      <div class="customer_status_item">
+        <%= current_customer.postal_code %>
+      </div>
+    </div>
+    <div class="row customer_status_box">
+      <div class="customer_status_title">
+        住所
+      </div>
+      <div class="customer_status_item">
+        <%= current_customer.address %>
+      </div>
+    </div>
+    <div class="row customer_status_box">
+      <div class="customer_status_title">
+        電話番号
+      </div>
+      <div class="customer_status_item">
+        <%= current_customer.telephone_number %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="customer_status_title">
+        メールアドレス
+      </div>
+      <div class="customer_status_item">
+        <%= current_customer.email %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 15px; margin-top: 30px;">
+    <h4 class="col-3">配送先</h4>
+    <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary", style: "width: 120px;" %>
+  </div>
+  <div class="row" style="margin-bottom: 15px;">
+    <h4 class="col-3">注文一覧</h4>
+    <%= link_to "一覧を見る", orders_path, class: "btn btn-primary", style: "width: 120px;" %>
+  </div>
+</div>

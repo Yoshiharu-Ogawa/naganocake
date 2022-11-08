@@ -37,7 +37,26 @@ h1 {
   padding-bottom : 30px;
 }
 
+.customer_status {
+  border: 1px solid black;
+  max-width: 650px;
+}
 
+.customer_status_box {
+  border-bottom: 1px solid black;
+  /*height: 40px;*/
+
+}
+
+.customer_status_title {
+  border-right: 1px solid black;
+  background-color: #EEE;
+  width: 150px;
+}
+
+.customer_status_item {
+
+}
 
 .about-message {
   text-align : center;
