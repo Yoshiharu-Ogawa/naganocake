@@ -18,10 +18,11 @@
               <td>
                 <%= order.customer.name %>
               </td>
+              <!--sum(:quantity)とすることで、複数ある個々の商品の個数の合計をだす-->
               <td><%= order.order_details.sum(:quantity) %></td>
               <td></td>
               <td>
-              
+
               </td>
             <% end %>
           </tr>

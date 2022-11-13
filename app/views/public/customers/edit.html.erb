@@ -1,0 +1,47 @@
+<h4 class="page-title">会員情報編集</h4>
+
+<%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+
+  <%#= render "public/shared/error_messages", resource: resource %>
+
+  <div class="field row form-group">
+    <%= f.label "名前", class: "col-md-3" %>
+    <span style="margin-right: 1.5em;">(姓)</span><%= f.text_field :last_name, class: "col-md-3 form-control", placeholder: "令和" %>
+    <span style="margin: 0 1.5em 0 2em;">(名)</span><%= f.text_field :first_name, class: "col-md-3 form-control", placeholder: "太郎" %>
+  </div>
+
+  <div class="field row form-group">
+    <%= f.label "フリガナ", class: "col-md-3" %>
+    <span style="margin-right: 0.5em;">(セイ)</span><%= f.text_field :last_name_kana, class: "col-md-3 form-control", placeholder: "レイワ" %>
+    <span style="margin: 0 0.5em 0 2em;">(メイ)</span><%= f.text_field :first_name_kana, class: "col-md-3 form-control", placeholder: "タロウ" %>
+  </div>
+
+  <div class="field row form-group">
+    <%= f.label "郵便番号(ハイフンなし)", class: "col-md-3" %>
+    <span style="margin-right: 3.1em;"></span><%= f.number_field :postal_code, class: "col-md-3 form-control", placeholder: "0000000" %>
+  </div>
+
+  <div class="field row form-group">
+    <%= f.label "住所", class: "col-md-3" %>
+    <span style="margin-right: 3.1em;"></span><%= f.text_field :address, class: "col-md-7 form-control", placeholder: "東京都港区六本木下北町1-1" %>
+  </div>
+
+  <div class="field row form-group">
+    <%= f.label "電話番号(ハイフンなし)", class: "col-md-3" %>
+    <span style="margin-right: 3.1em;"></span><%= f.text_field :telephone_number, class: "col-md-3 form-control", placeholder: "0000000000" %>
+  </div>
+
+  <div class="field row form-group">
+    <%= f.label "メールアドレス", class: "col-md-3" %><br />
+    <span style="margin-right: 3.1em;"></span><%= f.email_field :email, class: "col-md-3 form-control", autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+  </div>
+
+  <div class="actions row">
+    <div class="col-md-3"></div>
+    <span style="margin-right: 3.1em;"></span><%= f.submit "編集内容を保存", class: "btn btn-success col-md-3", style: "margin: 15px 0;" %>
+    <span style="margin-right: 3.1em;"></span><%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger col-md-3", style: "margin: 15px 0;" %>
+  </div>
+
+
+<% end %>
+

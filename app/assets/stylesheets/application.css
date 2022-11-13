@@ -21,7 +21,7 @@
 main {
   padding-top : 150px;
   padding-bottom : 50px;
-  margin : 0 0 0 10%;
+  margin : 0 10% 0 10%;
 }
 
 header {
@@ -115,3 +115,34 @@ h1 {
 .thead-color {
   background-color : #EEE;
 }
+
+/*ショッピングカート*/
+.cart-table {
+  border: 1px solid black;
+  margin: 30px auto;
+  /*border-bottom: none;*/
+}
+
+.cart-table-head {
+  background-color: #EEE;
+  border-bottom: 1px solid black;
+}
+
+.cart-table-body {
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+td {
+  border-right: 1px solid black;
+  height: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+th {
+  border-right: 1px solid black;
+  height: 50px;
+}
+
+

@@ -4,7 +4,9 @@
 <div class="container">
   <div class="row" style="margin-bottom: 15px;">
     <h4 class="col-3">登録情報</h4>
-    <%= link_to "編集する", edit_customer_path(current_customer.id), class: "btn btn-success" %>
+    <%#= if customer_signed_in? && @customer == current_customer %>
+      <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success" %>
+    <%# end %>
   </div>
 
   <div class="container customer_status" style="max-width: 550px; margin: 5px 0 10px 0;">

@@ -22,9 +22,12 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     resources :cart_items, only: [:index, :create, :update, :destroy ]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
-    resources :customers, only: [:show, :edit, :update ]
+    # resource :customers, only: [:edit, :update ]
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
-    patch 'customers/reject_user' => 'customers#reject_user'
+    patch 'customers/reject_customer' => 'customers#reject_customer'
 
     root to: 'homes#top'
     get 'homes/about' => 'homes#about'
