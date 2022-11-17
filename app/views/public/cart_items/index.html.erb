@@ -29,7 +29,7 @@
                     </td>
                     <td style="width: 15%;">
                         <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
-                            <%= f.select :amount, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5]] %>
+                            <%= f.select :amount, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9],["10個",10]] %>
                             <%= f.submit "変更", class: "btn btn-success btn-sm", style: "width: 50px;" %>
                         <% end %>
                     </td>

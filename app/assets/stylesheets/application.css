@@ -145,4 +145,8 @@ th {
   height: 50px;
 }
 
+/*order 注文情報入力*/
+.order_items li {
+  display: block;
+}
 
