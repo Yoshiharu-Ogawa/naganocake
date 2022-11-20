@@ -1,0 +1,73 @@
+<h4 class="page-title">注文情報確認</h4>
+
+<div>
+
+  <table style="display: inline-block;">
+    <thead class="cart-table-head">
+      <tr style=" border-top: 1px solid black;">
+        <th style="width: 40%; border-left: 1px solid black;">商品名</th>
+        <th style="width: 15%;">単価(税込)</th>
+        <th style="width: 15%;">数量</th>
+        <th style="width: 15%;">小計</th>
+      </tr>
+    </thead>
+    <% @cart_items.each do |cart_item| %>
+      <tbody class="cart-table-body">
+        <tr style="border-left: 1px solid black;">
+          <td style="width: 40%;">
+            <%= image_tag cart_item.item.image, size: "60x40", style: "background-size : cover;" %>
+            <%= cart_item.item.name %>
+          </td>
+          <td style="width: 15%;">
+            <%= cart_item.item.add_tax_price.to_s(:delimited) %>
+          </td>
+          <td style="width: 15%">
+            <%= cart_item.amount %>
+          </td>
+          <td style="width: 15%;">
+            <% @total = @total+ cart_item.subtotal %>
+            <%= cart_item.subtotal.to_s(:delimited) %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+  </table>
+
+  <div class="container" style="border: 1px solid black; width: 200px; display: inline-block;">
+    <div class="row" style="border-bottom: 1px solid black; height: 48px; line-height: 2;">
+      <div class="col-6" style="background-color: #EEE; font-weight: bold; border-right: 1px solid black; width: 50%;">送料</div>
+      <div class="col-6" style=" width: 50%;">
+        <%= @order.freight.to_s(:delimited) %>
+      </div>
+    </div>
+    <div class="row" style="border-bottom: 1px solid black; height: 48px; line-height: 2;">
+      <div class="col-6" style="background-color: #EEE; font-weight: bold; border-right: 1px solid black; width: 50%;">商品合計</div>
+      <div class="col-6" style=" width: 50%;">
+        <%= @total.to_s(:delimited) %>
+      </div>
+    </div>
+    <div class="row" style=" height: 48px; line-height: 2;">
+      <div class="col-6" style="background-color: #EEE; font-weight: bold; border-right: 1px solid black; width: 50%;">請求額</div>
+      <div class="col-6" style=" width: 50%;">
+        <% @order.total_payment = @total + @order.freight %>
+        <%= @order.total_payment.to_s(:delimited) %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <h4><strong>支払方法</strong></h4>
+  <%= @order.payment_method_i18n %>
+</div>
+
+<div class="row">
+  <h4><strong>お届け先</strong></h4>
+  〒<%= @order.delivery_postal_code %>
+  <%= @order.delivery_address %></br>
+  <%= @order.delivery_name %>
+</div>
+
+
+<%= link_to '注文を確定する', orders_path, method: :post, class: "btn btn-success", style: "width: 160px; margin: 20px auto; display: block;" %>

@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/naganocake/app/controllers/public/orders_controller.rb:18 Public::OrdersController#confirm:
+
+     [1;34m8[0m: [32mdef[0m [1;34mconfirm[0m
+     [1;34m9[0m:   [1;34m# @order = Order.new(order_params)[0m
+    [1;34m10[0m:   binding.pry
+    [1;34m11[0m:   [1;34m# @cart_items = current_customer.cart_items[0m
+    [1;34m12[0m:   [1;34m# @total = 0[0m
+    [1;34m13[0m:   [1;34m# if select_address == 0[0m
+    [1;34m14[0m:   [1;34m# elsif slect_address == 1[0m
+    [1;34m15[0m:   [1;34m# elsif slect_address == 2[0m
+    [1;34m16[0m:   [1;34m# end[0m
+    [1;34m17[0m: 
+ => [1;34m18[0m: [32mend[0m
+

@@ -19,7 +19,7 @@
     <h4>お届け先</h4>
     <ul class="order_items">
       <li>
-        <%= f.radio_button :select_address, 0 %>
+        <%= f.radio_button :select_address, 0, checked: true%>
         <%= f.label :select_address, 'ご自身の住所' %></br>
         〒<%= current_customer.postal_code %>
         <%= current_customer.address %></br>
@@ -46,7 +46,9 @@
       </li>
     </ul>
 
-    <%= f.submit "確認画面に進む", class: "btn btn-primary" %>
+    <%= f.hidden_field :freight, :value => 800 %>
+
+    <%= f.submit "確認画面に進む", class: "btn btn-primary", style: "width: 150px; margin: 0 auto; display: block;" %>
 
   <% end %>
 </div>
