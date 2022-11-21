@@ -35,8 +35,8 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
     resources :items, only: [:index, :show ]
 
-    resources :orders, only: [:new, :create, :index, :show ]
     get 'orders/complete' => 'orders#complete'
+    resources :orders, only: [:new, :create, :index, :show ]
     post 'orders/confirm' => 'orders#confirm'
 
     #resources :registrations, only: [:new, :create ]

@@ -69,5 +69,18 @@
   <%= @order.delivery_name %>
 </div>
 
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
 
-<%= link_to '注文を確定する', orders_path, method: :post, class: "btn btn-success", style: "width: 160px; margin: 20px auto; display: block;" %>
+  <%= f.hidden_field :total_payment, :value => @order.total_payment %>
+  <%= f.hidden_field :freight, :value => @order.freight %>
+  <%= f.hidden_field :delivery_postal_code, :value => @order.delivery_postal_code %>
+  <%= f.hidden_field :delivery_address, :value => @order.delivery_address %>
+  <%= f.hidden_field :delivery_name, :value => @order.delivery_name %>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+  <%= f.hidden_field :order_status, :value => @order.order_status %>
+
+  <%= f.submit "注文を確定する", class: "btn btn-success", style: "width: 160px; margin: 20px auto; display: block;" %>
+
+<% end %>
+
+<%#= link_to '注文を確定する', orders_path, method: :post, class: "btn btn-success", style: "width: 160px; margin: 20px auto; display: block;" %>

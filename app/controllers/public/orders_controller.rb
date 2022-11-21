@@ -26,6 +26,8 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
+    # @cart_items = current_customer.cart_items
+    # @cart_items.destroy_all
     redirect_to orders_complete_path
   end
 
@@ -33,7 +35,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
+    @cart_items = current_customer.cart_items
   end
 
   def show
