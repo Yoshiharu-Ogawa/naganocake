@@ -26,8 +26,26 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    # @cart_items = current_customer.cart_items
-    # @cart_items.destroy_all
+    # カートアイテム内の情報をOrderDetailに保存する必要がある
+    @cart_items = current_customer.cart_items
+    # カート内には複数のアイテム情報があるので、eachで一つずつ分ける
+    # カートアイテム内のそれぞれのデータをOrderDetailのデータカラムに保存する
+    @cart_items.each do |cart_item|
+      # OrderDetailに保存するための空の箱
+      order_detail = OrderDetail.new
+      # OrderDetailに渡すorder_idは、上の動作で作成したOrderのIDを格納
+      order_detail.order_id = @order.id
+      # カート内にある複数の商品ID
+      order_detail.item_id = cart_item.item_id
+      # Orderでは商品個数がamountだったが、OrderDetailではquantity
+      order_detail.quantity = cart_item.amount
+      # Orderでは商品一つの税込み価格がモデルにitem.add_tax_priceであったが、OrderDetailではprice_including_taxというカラムに入れる
+      order_detail.price_including_tax = cart_item.item.add_tax_price
+      # OrderDetailでは、あとproduction_statusというカラムがあるが、初期値0で設定され送っているので、データの置換は必要なし
+      order_detail.save
+    end
+    # カートの商品を移し替えたので、current_customerのカート内情報を全削除
+    @cart_items.destroy_all
     redirect_to orders_complete_path
   end
 
@@ -41,6 +59,8 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @total = 0
+    @order_details = @order.order_details
   end
 
   private

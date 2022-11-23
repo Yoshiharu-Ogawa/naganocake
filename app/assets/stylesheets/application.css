@@ -106,6 +106,8 @@ h1 {
   background-color : #EEEEEE;
   padding : 0 20px;
   display : inline-block;
+  margin-left: 10%;
+  margin-bottom: 50px;
 }
 
 .number_field {
@@ -148,5 +150,20 @@ th {
 /*order 注文情報入力*/
 .order_items li {
   display: block;
+}
+
+/*order_showのcss*/
+.order-row {
+  border-bottom: 1px solid black;
+}
+
+.order-title {
+  background-color: #EEE;
+  border-right: 1px solid black;
+  padding: 15px 0;
+}
+
+.order-item {
+  padding: 15px 0;
 }
 

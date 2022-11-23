@@ -5,4 +5,7 @@ class OrderDetail < ApplicationRecord
 
   enum production_status:{production_not_possible: 0, production_pending: 1, in_production: 2, production_complete: 3 }
 
+  def subtotal
+    price_including_tax * quantity
+  end
 end

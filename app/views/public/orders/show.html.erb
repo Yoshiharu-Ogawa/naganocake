@@ -1,0 +1,91 @@
+<h4 class="page-title">注文履歴詳細</h4>
+
+<div style="">
+
+<div class="container" style="max-width: 700px; margin-bottom: 15px; display: inline-block;">
+<h6 style="font-weight: 700;">注文情報</h6>
+  <div class="container" style="border: 1px solid black; display: inline-block;">
+    <div class="row order-row">
+      <div class="col-3 order-title">注文日</div>
+      <div class="col-9 order-item"><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+    </div>
+    <div class="row order-row">
+      <div class="col-3 order-title">発送先</div>
+      <div class="col-9">
+        〒<%= @order.delivery_postal_code %></br>
+        <%= @order.delivery_address %></br>
+        <%= @order.delivery_name %>
+      </div>
+    </div>
+    <div class="row order-row">
+      <div class="col-3 order-title">支払方法</div>
+      <div class="col-9 order-item"><%= @order.payment_method_i18n %></div>
+    </div>
+    <div class="row">
+      <div class="col-3 order-title">ステータス</div>
+      <div class="col-9 order-item"><%= @order.order_status_i18n %></div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="max-width: 350px; margin-bottom: 15px; display: inline-block; vertical-align: top;">
+  <h6 style="font-weight: 700;">請求情報</h6>
+    <div class="container" style="border: 1px solid black; display: inline-block;">
+      <div class="row order-row">
+        <div class="col-7 order-title">商品合計</div>
+        <div class="col-5 order-item">
+          <% freight = @order.freight %>
+          <% total_payment = @order.total_payment %>
+          <% total = total_payment.to_i - freight.to_i %>
+          <%= total.to_s(:delimited) %>
+        </div>
+      </div>
+      <div class="row order-row">
+        <div class="col-7 order-title">発送料</div>
+        <div class="col-5 order-item">
+          <%= freight.to_s(:delimited) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-7 order-title" style="font-weight: 700;">ご請求額</div>
+        <div class="col-5 order-item">
+          <%= total_payment.to_s(:delimited) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="container" style="display: inline-block;">
+  <h6 style="font-weight: 700;">注文内容</h6>
+    <table style="display: inline-block;">
+      <thead class="cart-table-head width: 800px;">
+        <tr style=" border-top: 1px solid black;">
+          <th style="width: 40%; border-left: 1px solid black;">商品名</th>
+          <th style="width: 25%;">単価(税込)</th>
+          <th style="width: 15%;">数量</th>
+          <th style="width: 15%;">小計</th>
+        </tr>
+      </thead>
+      <% @order_details.each do |order_detail| %>
+      <tbody class="cart-table-body">
+        <tr style="border-left: 1px solid black;">
+          <td>
+            <%= order_detail.item.name %>
+          </td>
+          <td>
+            <%= order_detail.price_including_tax.to_s(:delimited) %>
+          </td>
+          <td>
+            <%= order_detail.quantity %>
+          </td>
+          <td>
+            <% @total = @total+ order_detail.subtotal %>
+            <%= order_detail.subtotal.to_s(:delimited) %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
