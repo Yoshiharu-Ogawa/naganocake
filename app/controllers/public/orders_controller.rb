@@ -54,7 +54,10 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
-    @cart_items = current_customer.cart_items
+    # @cart_items = current_customer.cart_items
+    #@orders.each do |order|
+    #@order_details = order.order_details
+    #end
   end
 
   def show

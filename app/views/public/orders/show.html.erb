@@ -62,25 +62,25 @@
     <table style="display: inline-block;">
       <thead class="cart-table-head width: 800px;">
         <tr style=" border-top: 1px solid black;">
-          <th style="width: 40%; border-left: 1px solid black;">商品名</th>
-          <th style="width: 25%;">単価(税込)</th>
-          <th style="width: 15%;">数量</th>
-          <th style="width: 15%;">小計</th>
+          <th class="public-th" style="width: 40%; border-left: 1px solid black;">商品名</th>
+          <th class="public-th" style="width: 25%;">単価(税込)</th>
+          <th class="public-th" style="width: 15%;">数量</th>
+          <th class="public-th" style="width: 15%;">小計</th>
         </tr>
       </thead>
       <% @order_details.each do |order_detail| %>
       <tbody class="cart-table-body">
         <tr style="border-left: 1px solid black;">
-          <td>
+          <td class="public-td">
             <%= order_detail.item.name %>
           </td>
-          <td>
+          <td class="public-td">
             <%= order_detail.price_including_tax.to_s(:delimited) %>
-          </td>
-          <td>
+          </td class="public-td">
+          <td class="public-td">
             <%= order_detail.quantity %>
           </td>
-          <td>
+          <td class="public-td">
             <% @total = @total+ order_detail.subtotal %>
             <%= order_detail.subtotal.to_s(:delimited) %>
           </td>

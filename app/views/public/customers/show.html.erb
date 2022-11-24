@@ -1,5 +1,5 @@
 
-<h4 class="page-title" style="margin: 0px 0 25px 120px;">マイページ</h4>
+<h4 class="page-title">マイページ</h4>
 
 <div class="container">
   <div class="row" style="margin-bottom: 15px;">
@@ -9,7 +9,7 @@
     <%# end %>
   </div>
 
-  <div class="container customer_status" style="max-width: 550px; margin: 5px 0 10px 0;">
+  <div class="container customer_status" style="max-width: 550px; margin: 5px 0 15px 0;">
     <div class="row customer_status_box">
       <div class="customer_status_title">
         氏名
@@ -60,10 +60,10 @@
     </div>
   </div>
 
-  <div class="row" style="margin-bottom: 15px; margin-top: 30px;">
-    <h4 class="col-3">配送先</h4>
-    <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary", style: "width: 120px;" %>
-  </div>
+  <!--<div class="row" style="margin-bottom: 15px; margin-top: 30px;">-->
+  <!--  <h4 class="col-3">配送先</h4>-->
+    <%#= link_to "一覧を見る", addresses_path, class: "btn btn-primary", style: "width: 120px;" %>
+  <!--</div>-->
   <div class="row" style="margin-bottom: 15px;">
     <h4 class="col-3">注文履歴</h4>
     <%= link_to "一覧を見る", orders_path, class: "btn btn-primary", style: "width: 120px;" %>

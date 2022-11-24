@@ -4,12 +4,12 @@
 
   <thead style="border-bottom: 1px solid black; background-color: #EEE;">
     <tr>
-      <th>注文日</th>
-      <th>発送先</th>
-      <th>注文商品</th>
-      <th>支払金額</th>
-      <th>ステータス</th>
-      <th>注文詳細</th>
+      <th class="public-th">注文日</th>
+      <th class="public-th">発送先</th>
+      <th class="public-th">注文商品</th>
+      <th class="public-th">支払金額</th>
+      <th class="public-th">ステータス</th>
+      <th class="public-th">注文詳細</th>
     </tr>
   </thead>
 
@@ -17,20 +17,21 @@
   <% @orders.each do |order| %>
   <%# @cart_items.each do |cart_item| %>
     <tr style="border-bottom: 1px solid black;">
-      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-      <td>
+      <td class="public-td"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+      <td class="public-td">
         〒<%= order.delivery_postal_code %></br>
         <%= order.delivery_address %></br>
         <%= order.delivery_name %>
       </td>
-      <td>
-        <% @cart_items.each do |cart_items| %>
-          <%= cart_items.item.name %></br>
+      <td class="public-td">
+        <% order_details = order.order_details %>
+        <% order_details.each do |order_detail| %>
+          <%= order_detail.item.name %></br>
         <% end %>
       </td>
-      <td><%= order.total_payment.to_s(:delimited) %>円</td>
-      <td><%= order.order_status_i18n %></td>
-      <td>
+      <td class="public-td"><%= order.total_payment.to_s(:delimited) %>円</td>
+      <td class="public-td"><%= order.order_status_i18n %></td>
+      <td class="public-td">
         <%= link_to '表示する', order_path(order.id), class: "btn btn-primary btn-sm" %>
       </td>
     </tr>

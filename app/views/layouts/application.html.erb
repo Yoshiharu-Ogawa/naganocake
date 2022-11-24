@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,8 +13,8 @@
   <body>
 
     <header>
-      <nav class="navbar navbat-expand-md navbar-dark fixed-top bg-white">
-        <div class="header-logo">
+      <nav class="navbar navbat-expand-md navbar-dark fixed-top bg-white;" style=" z-index: 9999; background-color: white;">
+        <div class="header-logo" style="border: 1px solid black; padding: 5px; margin-left: 5%;">
           <%= link_to 'NAGANO CAKE', root_path %>
         </div>
         <% if customer_signed_in? %>
@@ -116,7 +115,7 @@
 
     <footer class="fixed-bottom">
       <div class="container">
-        <span class="text-muted">ここはフッターの領域</span>
+        <span style="height: 60px;"></span>
       </div>
     </footer>
 

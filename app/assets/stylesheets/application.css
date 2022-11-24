@@ -29,7 +29,10 @@ header {
 }
 
 footer {
-  border-top : 1px solid black;
+  /*border-top : 1px solid black;*/
+  background-color: #FF9999;
+  height: 60px;
+  z-index: 9999;
 }
 
 h1 {
@@ -45,17 +48,18 @@ h1 {
 .customer_status_box {
   border-bottom: 1px solid black;
   /*height: 40px;*/
-
+  /*padding: 15px 0;*/
 }
 
 .customer_status_title {
   border-right: 1px solid black;
   background-color: #EEE;
   width: 150px;
+  padding: 15px 0;
 }
 
 .customer_status_item {
-
+  padding: 15px 0;
 }
 
 .about-message {
@@ -73,8 +77,10 @@ h1 {
 
 .back-image {
   background-image :url(cake1);
+  object-fit: cover;
   margin-bottom : 5px;
   height: 280px;
+  background-size: cover;
 }
 
 .top-message {
@@ -135,14 +141,14 @@ h1 {
   padding: 5px;
 }
 
-td {
+.public-td {
   border-right: 1px solid black;
   height: 50px;
   padding-right: 10px;
   padding-left: 10px;
 }
 
-th {
+.public-th {
   border-right: 1px solid black;
   height: 50px;
 }
@@ -167,3 +173,7 @@ th {
   padding: 15px 0;
 }
 
+/*admin item*/
+.pagination {
+  justify-content: center;
+}

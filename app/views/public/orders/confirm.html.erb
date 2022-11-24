@@ -2,29 +2,29 @@
 
 <div>
 
-  <table style="display: inline-block;">
+  <table style="display: inline-block; margin-right: 20px; margin-bottom: 30px;">
     <thead class="cart-table-head">
       <tr style=" border-top: 1px solid black;">
-        <th style="width: 40%; border-left: 1px solid black;">商品名</th>
-        <th style="width: 15%;">単価(税込)</th>
-        <th style="width: 15%;">数量</th>
-        <th style="width: 15%;">小計</th>
+        <th class="public-th" style="width: 40%; border-left: 1px solid black;">商品名</th>
+        <th class="public-th" style="width: 15%;">単価(税込)</th>
+        <th class="public-th" style="width: 15%;">数量</th>
+        <th class="public-th" style="width: 15%;">小計</th>
       </tr>
     </thead>
     <% @cart_items.each do |cart_item| %>
       <tbody class="cart-table-body">
         <tr style="border-left: 1px solid black;">
-          <td style="width: 40%;">
+          <td class="public-td" style="width: 40%;">
             <%= image_tag cart_item.item.image, size: "60x40", style: "background-size : cover;" %>
             <%= cart_item.item.name %>
           </td>
-          <td style="width: 15%;">
+          <td class="public-td" style="width: 15%;">
             <%= cart_item.item.add_tax_price.to_s(:delimited) %>
           </td>
-          <td style="width: 15%">
+          <td class="public-td" style="width: 15%">
             <%= cart_item.amount %>
           </td>
-          <td style="width: 15%;">
+          <td class="public-td" style="width: 15%;">
             <% @total = @total+ cart_item.subtotal %>
             <%= cart_item.subtotal.to_s(:delimited) %>
           </td>
@@ -33,7 +33,7 @@
       <% end %>
   </table>
 
-  <div class="container" style="border: 1px solid black; width: 200px; display: inline-block;">
+  <div class="container" style="border: 1px solid black; width: 200px; display: inline-block; vertical-align: top;">
     <div class="row" style="border-bottom: 1px solid black; height: 48px; line-height: 2;">
       <div class="col-6" style="background-color: #EEE; font-weight: bold; border-right: 1px solid black; width: 50%;">送料</div>
       <div class="col-6" style=" width: 50%;">
@@ -57,16 +57,18 @@
 
 </div>
 
-<div class="row">
-  <h4><strong>支払方法</strong></h4>
-  <%= @order.payment_method_i18n %>
-</div>
+<div class="container" style="margin-left: 0;">
+  <div class="row">
+    <h4 class="col-2"><strong>支払方法</strong></h4>
+    <%= @order.payment_method_i18n %>
+  </div>
 
-<div class="row">
-  <h4><strong>お届け先</strong></h4>
-  〒<%= @order.delivery_postal_code %>
-  <%= @order.delivery_address %></br>
-  <%= @order.delivery_name %>
+  <div class="row">
+    <h4 class="col-2"><strong>お届け先</strong></h4>
+    〒<%= @order.delivery_postal_code %>
+    <%= @order.delivery_address %></br>
+    <%= @order.delivery_name %>
+  </div>
 </div>
 
 <%= form_with model: @order, url: orders_path, method: :post do |f| %>
