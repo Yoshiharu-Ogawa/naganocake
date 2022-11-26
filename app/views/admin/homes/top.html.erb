@@ -1,33 +1,36 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h4 class="page-title">注文履歴一覧</h4>
-      <table class="table">
-        <thead class="thead-color">
-          <tr>
-            <th>購入日時</th>
-            <th>購入者</th>
-            <th>注文個数</th>
-            <th>注文ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <% @orders.each do |order| %>
-              <td><%= order.created_at %></td>
-              <td>
-                <%= order.customer.name %>
-              </td>
-              <!--sum(:quantity)とすることで、複数ある個々の商品の個数の合計をだす-->
-              <td><%= order.order_details.sum(:quantity) %></td>
-              <td></td>
-              <td>
+<h4 class="page-title">注文履歴一覧</h4>
 
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<table class="table">
+  <thead class="thead-color">
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td>
+        <!--ここでadmin_order_pathの引数を間違えると、注文履歴詳細に渡す元のデータが変わってしまう。-->
+        <!--例えば、admin_order_path(order.customer.id)にしてしまうと、その顧客が複数のorderをしていた場合、最初のorderだけが表示されてしまう-->
+        <%= link_to admin_order_path(order.id), method: :get do %>
+          <%= order.created_at.strftime('%Y/%m/%d') %>
+        <% end %>
+      </td>
+      <td>
+        <% name = order.customer.last_name + order.customer.first_name %>
+        <%= name %>
+      </td>
+      <!--sum(:quantity)とすることで、複数ある個々の商品の個数の合計をだす-->
+      <td><%= order.order_details.sum(:quantity) %></td>
+      <td><%= order.order_status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="p-top__paginate">
+  <%= paginate @orders %>
 </div>

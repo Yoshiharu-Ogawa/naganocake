@@ -18,11 +18,12 @@
             <td><%= customer.id %></td>
             <td>
               <%= link_to admin_customer_path(customer.id), class: '', method: :get do %>
-                <%= customer.name %>
+                <% name = customer.last_name + customer.first_name %>
+                <%= name %>
               <% end %>
             </td>
             <td><%= customer.email %></td>
-            <td></td>
+            <!--<td></td>-->
             <td>
               <% if customer.is_deleted == false %>
                 <div class="text-success font-weight-bold">有効</div>

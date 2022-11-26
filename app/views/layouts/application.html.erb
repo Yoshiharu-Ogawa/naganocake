@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/9a85a3920e.js" crossorigin="anonymous"></script>
   </head>
 
   <!--<body class="d-flex flex-column h-100">-->
@@ -26,27 +27,27 @@
           <ul class="navbar-nav mr-auto flex-row">
             <% if admin_signed_in? %>
               <!--管理者側表示-->
-              <button type="button" class="btn btn-outline-secondary">
+              <button type="button" class="btn btn-outline-secondary admin-buttom">
                 <li class="nav-item">
                   <%= link_to "商品一覧", admin_items_path %>
                 </li>
               </button>
-              <button type="button" class="btn btn-outline-secondary">
+              <button type="button" class="btn btn-outline-secondary admin-buttom">
                 <li class="nav-item">
                   <%= link_to "会員一覧", admin_customers_path %>
                 </li>
               </button>
-              <button type="button" class="btn btn-outline-secondary">
+              <button type="button" class="btn btn-outline-secondary admin-buttom">
                 <li class="nav-item">
-                  <%= link_to "注文履歴一覧", orders_path %>
+                  <%= link_to "注文履歴一覧", admin_path %>
                 </li>
               </button>
-              <button type="button" class="btn btn-outline-secondary">
-                <li class="nav-item">
-                  <%= link_to "ジャンル一覧", admin_genres_path %>
-                </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary">
+              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
+              <!--  <li class="nav-item">-->
+                  <%#= link_to "ジャンル一覧", admin_genres_path %>
+              <!--  </li>-->
+              <!--</button>-->
+              <button type="button" class="btn btn-outline-secondary admin-buttom">
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
                 </li>

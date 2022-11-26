@@ -1,0 +1,102 @@
+<h4 class="page-title" style="margin-bottom: 20px;">注文履歴詳細</h4>
+
+<div class="container">
+  <div class="row customer-date">
+    <div class="col-3" style="font-weight: 700;">購入者</div>
+    <div>
+      <%= link_to admin_customer_path(@order.customer.id), method: :get do %>
+        <%= @order.customer.last_name + @order.customer.first_name %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row customer-date">
+    <div class="col-3" style="font-weight: 700;">注文日</div>
+    <div>
+      <%= @order.created_at.strftime('%Y/%m/%d') %>
+    </div>
+  </div>
+  <div class="row customer-date">
+    <div class="col-3" style="font-weight: 700;">発送先</div>
+    <div>
+      〒<%= @order.delivery_postal_code %></br>
+        <%= @order.delivery_address %></br>
+        <%= @order.delivery_name %>
+    </div>
+  </div>
+  <div class="row customer-date">
+    <div class="col-3" style="font-weight: 700;">支払方法</div>
+    <div>
+      <%= @order.payment_method_i18n %>
+    </div>
+  </div>
+  <div class="row customer-date">
+    <div class="col-3" style="font-weight: 700;">注文ステータス</div>
+    <div>
+      <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+        <%#= f.select :order_status, [["入金待ち",0],["入金確認",1],["製作中",2],["発送準備",3],["発送済み",4]] %>
+        <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+        <%= f.submit "変更", class: "btn btn-success btn-sm", style: "width: 50px;" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div>
+  <table style="display: inline-block; margin-right: 20px; border-bottom: 1px solid #EEE;">
+    <thead class="cart-table-head" style="border-bottom: none;">
+      <tr>
+        <th class="admin-th" style="width: 30%;">商品名</th>
+        <th class="admin-th" style="width: 10%;">単価(税込)</th>
+        <th class="admin-th" style="width: 10%;">数量</th>
+        <th class="admin-th" style="width: 10%;">小計</th>
+        <th class="admin-th" style="width: 30%;">製作ステータス</th>
+      </tr>
+    </thead>
+    <% @order_details.each do |order_detail| %>
+      <tbody class="cart-table-body" style="border-bottom: none;">
+        <tr>
+          <td class="admin-td" style="width: 40%;">
+            <%= order_detail.item.name %>
+          </td>
+          <td class="admin-td" style="width: 15%;">
+            <%= order_detail.price_including_tax.to_s(:delimited) %>
+          </td>
+          <td class="admin-td" style="width: 15%">
+            <%= order_detail.quantity %>
+          </td>
+          <td class="admin-td" style="width: 15%;">
+            <% price = order_detail.price_including_tax %>
+            <% total_price = price.to_i * order_detail.quantity.to_i %>
+            <%= total_price.to_s(:delimited) %>
+            <%#= order_detail.order_detail_subtotal.to_s(:delimited) %>
+          </td>
+          <td class="admin-td" style="width: 15%;">
+            <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+              <%#= f.select :production_status, [["着手不可",0],["製作待ち",1],["製作中",2],["製作完了",3],] %>
+              <%= f.select :production_status, OrderDetail.production_statuses.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %>
+              <%= f.submit "変更", class: "btn btn-success btn-sm", style: "width: 50px;" %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+
+
+  <div class="container" style="display: inline-block; max-width: 200px; margin-top: 30px; padding-bottom: 100px;">
+    <div class="row">
+      <div style="font-weight:700; width: 50%;">商品合計</div>
+      <div class="col"><%= @order.total_payment.to_s(:delimited) %>円</div>
+    </div>
+    <div class="row">
+      <div style="font-weight:700; width: 50%;">送料</div>
+      <div class="col"><%= @order.freight.to_s(:delimited) %>円</div>
+    </div>
+    <div class="row">
+      <div style="font-weight:700; width: 50%;">請求金額合計</div>
+      <div class="col" style="font-weight:700;">
+        <%= (@order.total_payment.to_i + @order.freight.to_i).to_s(:delimited) %>円
+      </div>
+    </div>
+  </div>
+</div>

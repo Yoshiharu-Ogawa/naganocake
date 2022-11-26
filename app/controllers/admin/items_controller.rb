@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def index
-    @items = Item.page(params[:page])
+    @items = Item.page(params[:page]).per(10)
     # @items = Item.page(params[:page]).per(10)
   end
 
@@ -12,7 +12,7 @@ class Admin::ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     item.save
-    redirect_to admin_items_path
+    redirect_to admin_item_path(item.id)
   end
 
   def show

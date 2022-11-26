@@ -3,7 +3,7 @@
 </h4>
 
 <div class="container">
-  <div class="row">
+  <div class="row customer-date">
     <div class="data-title col-md-4">会員ID</div>
     <div class="data-item col-md-8">
       <%= @customer.id %>
@@ -12,55 +12,55 @@
 
   <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 
-    <div class="row">
+    <div class="row customer-date">
       <div class="data-title col-md-4">氏名</div>
       <div class="data-field col-md-4">
-        <%= f.text_field :last_name, placeholder: "田中" %>
+        <%= f.text_field :last_name, class: "form-control", placeholder: "田中" %>
       </div>
       <div class="data-field col-md-4">
-        <%= f.text_field :first_name, placeholder: "太郎" %>
+        <%= f.text_field :first_name, class: "form-control", placeholder: "太郎" %>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row customer-date">
       <div class="data-title col-md-4">フリガナ</div>
       <div class="data-field col-md-4">
-        <%= f.text_field :last_name_kana, placeholder: "タナカ" %>
+        <%= f.text_field :last_name_kana, class: "form-control", placeholder: "タナカ" %>
       </div>
       <div class="data-field col-md-4">
-        <%= f.text_field :first_name_kana, placeholder: "タロウ" %>
+        <%= f.text_field :first_name_kana, class: "form-control", placeholder: "タロウ" %>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row customer-date">
       <div class="data-title col-md-4">郵便番号</div>
       <div class="data-field col-md-4">
-        <%= f.number_field :postal_code, placeholder: "1234567(ハイフン不要)" %>
+        <%= f.number_field :postal_code, class: "form-control", placeholder: "1234567(ハイフン不要)" %>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row customer-date">
       <div class="data-title col-md-4">住所</div>
       <div class="data-field col-md-4">
-        <%= f.text_field :address %>
+        <%= f.text_field :address, class: "form-control" %>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row customer-date">
       <div class="data-title col-md-4">電話番号</div>
       <div class="data-field col-md-4">
-        <%= f.number_field, placeholder: "1234567890(ハイフン不要)" %>
+        <%= f.number_field :postal_code, class: "form-control", placeholder: "1234567890(ハイフン不要)" %>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row customer-date">
       <div class="data-title col-md-4">メールアドレス</div>
       <div class="data-field col-md-4">
-        <%= f.text_field, placeholder: "sample@email.address" %>
+        <%= f.text_field :email, class: "form-control", placeholder: "sample@email.address" %>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row customer-date">
       <div class="data-title col-md-4">会員ステータス</div>
       <div class="data-field col-md-4">
         <%= f.radio_button :is_deleted, :false %>
@@ -70,7 +70,11 @@
       </div>
     </div>
 
-    <%= f.submit '変更を保存', class: 'btn btn-success confirm-button' %>
+    <div class="row">
+      <span class="col-md-4"></span>
+      <%= f.submit '変更を保存', class: 'btn btn-success btn-sm', style: "min-width: 120px;" %>
+    </div>
+
 
   <% end %>
 

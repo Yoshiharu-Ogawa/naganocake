@@ -50,7 +50,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
     resources :genres, only: [:index, :edit, :create, :update ]
 
-    get 'homes/top' => 'homes#top'
+    get '' => 'homes#top'
 
     resources :items, only: [:new, :show, :index, :edit, :create, :update ]
 
